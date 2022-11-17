@@ -5,12 +5,12 @@ const fs = require('fs');
 
 
 function sanitizeString(str){
-   str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+   str = str.replace(/[^a-z0-9áéíóöőúñüű \.,_-]/gim,"");
    return str.trim();
 }
 
 function uuidv4() {
-   return 'xxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+   return 'xxxxxxxxxxxxx'.replace(/[x]/g, function(c) {
      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
      return v.toString(16);
    });
