@@ -12,7 +12,7 @@ export function InstrumentSinglePage(props) {
     setPending(true);
       (async () => {
         try {
-          const res = await fetch(`https://kodbazis.hu/api/instruments/${id}`, { credentials: "include" });
+          const res = await fetch(`http://localhost:9000/instruments/${id}`);
           const hangszer = await res.json();
           setInstrument(hangszer);
         } catch (err) {

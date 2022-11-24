@@ -6,7 +6,7 @@ export function InstrumentListPage() {
     const [isFetchPending, setFetchPending] = useState(false);
     useEffect(() => {
         setFetchPending(true);
-        fetch("https://kodbazis.hu/api/instruments", { credentials: "include" })
+        fetch("http://localhost:9000/instruments")
           .then((res) => res.json())
           .then((hangszerek) => setInstruments(hangszerek))
           .catch(console.log)

@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const cors = require('cors');
 
 
 function sanitizeString(str){
@@ -16,8 +17,15 @@ function uuidv4() {
    });
 }
 
+var corsOptions = {
+    origin: "http://localhost:3000",
+    credentials: false
+  };
+app.use(cors(corsOptions));
 
-app.use(express.static("public"));
+
+
+//app.use(express.static("public"));
 
 app.get('/', (req, res) => {
    res.sendFile(__dirname + '/public/index.html')
@@ -58,7 +66,7 @@ app.post('/instruments', bodyParser.json(), (req, res) => {
        quantity: Number(req.body.quantity),
        imageURL: req.body.imageURL,
    };
-
+ 
    fs.readFile('./data/instruments.json', (err, file) => {
        const instruments = JSON.parse(file);
        instruments.push(newInstrument);
@@ -116,7 +124,7 @@ app.delete('/instruments/:egyediAzonosito', (req, res) => {
        })
        
    })
-});
+}); 
 
 
-app.listen(3000);
+app.listen(9000);
